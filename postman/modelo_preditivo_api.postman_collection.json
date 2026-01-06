@@ -1,0 +1,79 @@
+{
+  "info": {
+    "name": "Modelo Preditivo API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": [""]
+        }
+      }
+    },
+    {
+      "name": "Predict (POST /predict)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"data\": [\n    {\"Close\": 100.00}, {\"Close\": 100.01}\n    \n  ]\n}\n"
+        },
+        "url": {
+          "raw": "http://localhost:5000/predict",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["predict"]
+        }
+      }
+    },
+    {
+      "name": "Predict by Ticker (GET /predict/ticker)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/predict/ticker?symbol=PETR4.SA&period=180d&interval=1d",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["predict", "ticker"],
+          "query": [
+            { "key": "symbol", "value": "PETR4.SA" },
+            { "key": "period", "value": "180d" },
+            { "key": "interval", "value": "1d" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Metrics (GET /metrics)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/metrics",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["metrics"]
+        }
+      }
+    }
+  ]
+}
+

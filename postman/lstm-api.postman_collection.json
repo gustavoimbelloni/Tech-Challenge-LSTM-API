@@ -1,0 +1,62 @@
+{
+  "info": {
+    "name": "LSTM API",
+    "_postman_id": "9c1f1e0a-6c63-4a2d-9c3c-collection",
+    "description": "Coleção para testar a API de previsão LSTM",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:5000" },
+    { "key": "symbol", "value": "AAPL" }
+  ],
+  "item": [
+    {
+      "name": "Health",
+      "request": { "method": "GET", "url": "{{baseUrl}}/" }
+    },
+    {
+      "name": "Predict by Ticker",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/predict/ticker?symbol={{symbol}}&period=180d&interval=1d"
+      }
+    },
+    {
+      "name": "Data by Ticker (last 60)",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/data/ticker?symbol={{symbol}}&period=180d&interval=1d&n=60"
+      }
+    },
+    {
+      "name": "Predict (JSON)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": "{{baseUrl}}/predict",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"data\": [\n    {\"Close\": 100.10}\n  ]\n}"
+        }
+      }
+    },
+    {
+      "name": "Train",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": "{{baseUrl}}/train",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"symbol\": \"{{symbol}}\",\n  \"period\": \"1y\",\n  \"interval\": \"1d\",\n  \"sequence_length\": 60,\n  \"epochs\": 10,\n  \"batch_size\": 32\n}"
+        }
+      }
+    },
+    {
+      "name": "Metrics",
+      "request": { "method": "GET", "url": "{{baseUrl}}/metrics" }
+    }
+  ]
+}
+
+

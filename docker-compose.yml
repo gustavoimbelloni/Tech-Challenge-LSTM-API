@@ -1,0 +1,18 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./model:/app/model  # Monta o diretório do modelo
+    environment:
+      MODEL_PATH: /app/model/lstm_model.h5
+      SCALER_PATH: /app/model/scaler.pkl
+      SEQUENCE_LENGTH: 60
+      YF_USE_CURL_CFFI: "0"
+      YF_NO_IMPERSONATE: "1"
+      TZ: "America/Sao_Paulo"
+    restart: always
+

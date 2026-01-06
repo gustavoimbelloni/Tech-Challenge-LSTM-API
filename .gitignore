@@ -1,0 +1,38 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.pyc
+*.pyd
+*.pyo
+
+# Virtual environment
+virtualenv/
+v_env/
+v_env_*
+venv/
+.venv/
+
+# Editor directories and files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS-specific files
+.DS_Store
+thumbs.db
+
+# Jupyter Notebook files
+.ipynb_checkpoints/
+
+# Model artifacts
+model/
+
+# Logs
+*.log
+
+# Environment variables
+.env
+
+# Docker
+*.dockerignore
+
