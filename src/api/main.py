@@ -681,9 +681,6 @@ def get_active_artifacts(optional_symbol: str | None):
 @app.route("/predict", methods=["POST"])
 @observe_request("predict_post")
 def predict():
-    if model is None or scaler is None:
-        return jsonify({"error": "Modelo ou scaler não carregados. Tente novamente mais tarde."}), 500
-
     try:
         # Tenta obter JSON independentemente do Content-Type
         data = request.get_json(silent=True)
@@ -810,9 +807,6 @@ def predict_get_info():
 @app.route("/predict/ticker", methods=["GET"])
 @observe_request("predict_from_ticker")
 def predict_from_ticker():
-    if model is None or scaler is None:
-        return jsonify({"error": "Modelo ou scaler não carregados. Tente novamente mais tarde."}), 500
-
     symbol = normalize_symbol(request.args.get("symbol"))
     period = request.args.get("period", "120d")
     interval = request.args.get("interval", "1d")
